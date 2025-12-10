@@ -26,6 +26,7 @@
             "pages": [
               "features/selectors",
               "features/markets-recommendation",
+              "features/markets-recommendation-display",
               "features/markets-redirect",
               "features/multiple-stores"
             ]

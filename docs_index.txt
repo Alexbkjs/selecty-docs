@@ -15,3 +15,4 @@ docs/advanced/pagefly.mdx
 docs/index.mdx
 docs/quickstart.mdx
 docs/pricing.mdx
+docs/features/markets-recommendation-display.mdx
