@@ -72,19 +72,18 @@ The documentation includes an embedded AI assistant widget that helps users find
 
 **All `.js` files located within the `/docs` folder are executed on every page of the documentation site.** This is how the AI assistant widget is injected into the documentation.
 
-### Widget Versions
+### Widget Configuration
 
-There are two versions of the assistant widget:
+The AI assistant widget automatically detects the environment and configures itself accordingly:
 
-#### Development Version
-- **File:** `docs/assistant-widget.iife(dev).js`
-- **API Endpoint:** `http://localhost:9000`
-- **Usage:** For local testing and development
+- **Local Development:** Connects to `http://localhost:9000`
+- **Production:** Connects to `https://rag-docs-api.vercel.app/api/chat`
 
-#### Production Version
-- **File:** `assistant-widget.iife.js` (root directory)
-- **API Endpoint:** `https://rag-docs-api.vercel.app/api/chat`
-- **Usage:** For the live documentation site
+This auto-detection ensures the widget works seamlessly in both environments without requiring manual configuration or multiple widget versions.
+
+### How It Works
+
+The widget automatically determines the environment based on the current hostname and adjusts its API endpoint accordingly. This eliminates the need for separate dev and production widget files.
 
 ### Testing the Widget Locally
 
@@ -102,23 +101,19 @@ To test the AI assistant widget in your local development environment:
    npm start
    ```
 
-2. **Use the dev widget:**
-
-   Ensure that `docs/assistant-widget.iife(dev).js` is present in your docs folder. This version points to your local backend.
-
-3. **Start Mintlify dev server:**
+2. **Start Mintlify dev server:**
 
    ```bash
    mintlify dev
    ```
 
-4. **Test the widget:**
+3. **Test the widget:**
 
-   Open `http://localhost:3000` and interact with the AI assistant to verify it's working with your local backend.
+   Open `http://localhost:3000` and interact with the AI assistant. The widget will automatically connect to your local backend at `localhost:9000`.
 
-### Production Widget
+### Production Deployment
 
-The production version uses a Vercel serverless function hosted at:
+When deployed to production, the widget automatically uses the Vercel serverless function hosted at:
 ```
 https://rag-docs-api.vercel.app/api/chat
 ```
